@@ -10,6 +10,7 @@ import Login from './routers/POST/login.js';
 import Commition from './routers/POST/commition.js';
 import SearchByClientName from './routers/POST/SearchByClientName.js' ;
 import PostProducts from './routers/POST/postProduct.js';
+import PostImage from './routers/POST/imageSlider.js' ;
 
 // -----------------DELETE-----------//
 import DeleteOrder from './routers/DELETE/order.js';
@@ -67,6 +68,10 @@ app.use('/api' ,SearchByClientName()) ;
 
 //  post products
 app.use('/api' ,PostProducts()) ;
+
+// add image slider 
+app.use('/api' , PostImage());
+
 // ----------------------------------------------------
 // ------------------DELETE---------------------------//
 // delete order by id and code 
@@ -101,3 +106,5 @@ app.listen(port, () => {
 })
 
 // api gimini key     AIzaSyBA-GGARuigekKJiVClyv40Ez20tladO3Y
+
+// data api mongodb key    SPdzfo3YIImKEWWqHlq9jFVYXEEvbsi9PzZif4aSgFbqxs4ofOxXU7ERhMJVyk66

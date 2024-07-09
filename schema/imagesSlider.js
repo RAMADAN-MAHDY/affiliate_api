@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema =  mongoose.Schema ; 
 
-const Emage = new Schema({
+const Image = new Schema({
     image :{
         type: [String],
         require: true
@@ -10,6 +10,6 @@ const Emage = new Schema({
 }) 
 
 
-const Emages = mongoose.model('Emage', Emage);
+const Images = mongoose.model('Image', Image);
 
-export default Emages;
+export default Images;

@@ -31,7 +31,7 @@ const app = express()
 const port = 5000;
 
 const corsOptions = {
-    origin: 'https://royal-corner.vercel.app',
+    origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
   
@@ -42,6 +42,7 @@ app.use((req, res, next) => {
     console.log(`حجم البيانات: ${contentLength} bytes`);
     next();
   });
+
   // زيادة الحد الأقصى لحجم البيانات المسموح به
 app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({limit: '10mb', extended: true, parameterLimit: 50000}));

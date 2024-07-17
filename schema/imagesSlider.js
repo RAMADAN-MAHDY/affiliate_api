@@ -7,6 +7,12 @@ const Image = new Schema({
         type: [String],
         require: true
     },
+    label :{
+        type: String,   
+    },
+    caption :{
+        type: String,
+    },
 }) 
 
 

@@ -59,11 +59,11 @@ const GetProdects = () => {
             // console.log('Alls:', alls);
 
             const allProducts = {
-                cosmetics,
-                clothess,
-                households,
-                ratans,
-                alls
+              "متسحضرات تجميل" : cosmetics,
+              "ملابس" : clothess,
+              " ادوات منزليه" : households,
+              " منتجات اوت دور (حدائق)" : ratans,
+              " منوعات" : alls
             };
 
             res.status(200).json(allProducts);

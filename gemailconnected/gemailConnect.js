@@ -10,9 +10,9 @@ const transporter = nodemailer.createTransport({
     }
   });
 
-  const sendMailbyCommition = async ({code, names })=>{
-console.log(code );
-console.log(names );
+  const sendMailbyCommition = async (code)=>{
+console.log(code);
+
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
         to: ['ramadanmahdy45@gmail.com' , 'ramadanmahdy52@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
@@ -28,6 +28,10 @@ console.log(names );
           console.log('تم إرسال البريد الإلكتروني بنجاح:', info.response);
         }})
   }
+
+
+
+
   const sendMailbyOrder = async ({code })=>{
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل

@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import connectDB from './db.js';
 import Socketio from './socket_io/socket_io.js';
+import compression from 'compression';
+
 
 // -----------------POST----------------//
 import PostConditions  from './routers/POST/condition.js';
@@ -14,11 +16,12 @@ import PostImage from './routers/POST/imageSlider.js' ;
 
 // -----------------DELETE-----------//
 import DeleteOrder from './routers/DELETE/order.js';
-
+import DeleteProducts from './routers/DELETE/deleteProduct.js';
 // -----------------PUT---------------//
 import PUTcommitionreq from './routers/PUT/PUTcommitionreq.js';
 import ChangeState from './routers/PUT/changeState.js';
 import ChangeCnodition from './routers/PUT/changeCondition.js';
+import PutProducts from './routers/PUT/changeProduct.js';
 
 // ------------------GET---------------//
 import DetailsCondition from './routers/GET/getDetailsCondition.js';
@@ -26,6 +29,7 @@ import Lengthoforder from './routers/GET/lengthOfOrder.js';
 import Commitionschmas from './routers/GET/Commitionschma.js';
 import Users from './routers/GET/User.js';
 import GetProdects from './routers/GET/productes.js';
+import imagesSlider from './routers/GET/getImageCarsolar.js';
 
 const app = express()
 const port = 5000;
@@ -46,7 +50,16 @@ app.use((req, res, next) => {
   // زيادة الحد الأقصى لحجم البيانات المسموح به
 app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({limit: '10mb', extended: true, parameterLimit: 50000}));
-
+app.use(compression({
+    level:6,
+    threshold: 0,
+    filter: (req, res) => {
+        if (req.headers['x-no-compression']) {
+            return false;
+        }
+        return compression.filter(req, res);
+    }
+}));
 connectDB();
 
 Socketio();
@@ -77,10 +90,15 @@ app.use('/api' , PostImage());
 // ------------------DELETE---------------------------//
 // delete order by id and code 
 app.use('/api' ,DeleteOrder()) ;
+// delete product
+app.use('/api' ,DeleteProducts()) ;
+
 // ----------------------------------------------------
 // ------------------PUT------------------------------//
 // put commitionreq data 
 app.use('/api' ,PUTcommitionreq()) ;
+// amendment products 
+app.use('/api' ,PutProducts()) ;
 
 // change state 
 app.use('/api' , ChangeState());
@@ -95,6 +113,7 @@ app.use('/api' , Lengthoforder());
 app.use('/api' , Commitionschmas());
 app.use('/api' , Users());
 app.use('/api' , GetProdects());
+app.use('/api' , imagesSlider());
 // ----------------------------------------------------
 
 app.get('/', (req, res) => {

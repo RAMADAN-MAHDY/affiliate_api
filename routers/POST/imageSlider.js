@@ -13,6 +13,8 @@ app.post('/image', async (req ,res) => {
   return res.status(400).json({message : "هناك مشكله في ارسال الصوره اللي السيرفر"});
  }
 
+ await Images.deleteMany({});
+
 await Images.create({image , label ,caption })
  res.status(201).json({message : "تم تحميل الصوره بنجاح" , image})
     }catch(err){

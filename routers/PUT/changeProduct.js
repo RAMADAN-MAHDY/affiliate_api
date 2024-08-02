@@ -9,13 +9,13 @@ const PutProducts = () => {
     const app = express();
     app.use(express.json());
   
-    const updateProductByCategory = async (category, id, productData) => {
+    const updateProductByCategory = async (category, id, formData) => {
         let updateFields = {};
 
         // Iterate through productData and pick only the fields that exist
         for (let field of ['image', 'address', 'details', 'price' , "newprice"]) {
-            if (productData[field] !== undefined) {
-                updateFields[field] = productData[field];
+            if (formData[field] !== undefined) {
+                updateFields[field] = formData[field];
             }
         }
 
@@ -46,9 +46,11 @@ const PutProducts = () => {
     app.put('/products/:category/:id', validateProductData, async (req, res) => {
         try {
             const { category, id } = req.params;
-            const productData = req.body;
-    
-            const updatedProduct = await updateProductByCategory(category, id, productData);
+            const formData = req.body;
+            
+            console.log(category)
+
+            const updatedProduct = await updateProductByCategory(category, id, formData);
     
             return res.status(200).json({ message: "تم تعديل المنتج بنجاح", product: updatedProduct });
         } catch (error) {

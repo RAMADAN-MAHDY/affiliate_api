@@ -36,9 +36,9 @@ const GetProdects = () => {
                     break;
             }
 
-            if (products.length === 0) {
-                return res.status(204).json([]);
-            }
+            // if (products.length === 0) {
+            //     return res.status(204).json({});
+            // }
 
             res.status(200).json(products);
         } catch (error) {

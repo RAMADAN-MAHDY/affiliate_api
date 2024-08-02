@@ -37,7 +37,7 @@ const GetProdects = () => {
             }
 
             if (products.length === 0) {
-                return res.status(404).json({ error: 'لا توجد منتجات في هذه الفئة' });
+                return res.status(204).json([]);
             }
 
             res.status(200).json(products);

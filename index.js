@@ -17,6 +17,7 @@ import PostImage from './routers/POST/imageSlider.js' ;
 // -----------------DELETE-----------//
 import DeleteOrder from './routers/DELETE/order.js';
 import DeleteProducts from './routers/DELETE/deleteProduct.js';
+
 // -----------------PUT---------------//
 import PUTcommitionreq from './routers/PUT/PUTcommitionreq.js';
 import ChangeState from './routers/PUT/changeState.js';
@@ -31,12 +32,13 @@ import Users from './routers/GET/User.js';
 import GetProdects from './routers/GET/productes.js';
 import imagesSlider from './routers/GET/getImageCarsolar.js';
 
-const app = express()
+const app = express();
+
 const port = 5000;
 
 const corsOptions = {
     origin: 'https://elmahdy.vercel.app',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200
   }
   
 app.use(cors(corsOptions));
@@ -47,7 +49,7 @@ app.use((req, res, next) => {
     next();
   });
 
-  // زيادة الحد الأقصى لحجم البيانات المسموح به
+  
 app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({limit: '10mb', extended: true, parameterLimit: 50000}));
 app.use(compression({
@@ -97,6 +99,7 @@ app.use('/api' ,DeleteProducts()) ;
 // ------------------PUT------------------------------//
 // put commitionreq data 
 app.use('/api' ,PUTcommitionreq()) ;
+
 // amendment products 
 app.use('/api' ,PutProducts()) ;
 
@@ -124,7 +127,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
 })
-
-// api gimini key     AIzaSyBA-GGARuigekKJiVClyv40Ez20tladO3Y
-
-// data api mongodb key    SPdzfo3YIImKEWWqHlq9jFVYXEEvbsi9PzZif4aSgFbqxs4ofOxXU7ERhMJVyk66

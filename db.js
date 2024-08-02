@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
+import Dotenv from 'dotenv';
 
-const uri = "mongodb+srv://ramadanmahdy786:6QexVzBviGbHDa5x@aflatestore.y8b0ki1.mongodb.net/?retryWrites=true&w=majority&appName=aflateStore";
+
+Dotenv.config()
+
+const uri = process.env.MONGO_DB;
 
 const connectDB = async () => {
   try {

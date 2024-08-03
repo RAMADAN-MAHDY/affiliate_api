@@ -20,8 +20,13 @@ const transporter = nodemailer.createTransport({
         subject: `  طلب العموله من الكود :/${code}`, // موضوع البريد
         text: `  طلب العموله  بكود ${code}.`, // نص البريد
         html: `
-        <p>أوردر جديد من الكود: <strong>${code}</strong>.</p>
-        <p>للاطلاع على التفاصيل، اضغط على الزر أدناه:</p>
+        <h1>  قام بطلب العموله: <strong>${code}</strong>.</h1>
+        <p style="
+        font-size : 24px ;
+        padding: 10px 20px;
+
+        
+        ">للاطلاع على التفاصيل، اضغط على الزر أدناه:</p>
         <a href="https://elmahdy.vercel.app/adminahmed" style="
             display: inline-block;
             padding: 10px 20px;
@@ -34,6 +39,7 @@ const transporter = nodemailer.createTransport({
         ">
             عرض التفاصيل
         </a>
+
     `
     };
 

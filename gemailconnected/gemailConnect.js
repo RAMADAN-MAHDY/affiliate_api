@@ -19,7 +19,22 @@ const transporter = nodemailer.createTransport({
         bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'],// عنوان المستلم (حساب Gmail الخاص بك)
         subject: `  طلب العموله من الكود :/${code}`, // موضوع البريد
         text: `  طلب العموله  بكود ${code}.`, // نص البريد
-        html: `<p>تم إضافة طلب عموله جديد من الكود <strong>${code}</strong>.</p>` // محتوى HTML للبريد
+        html: `
+        <p>أوردر جديد من الكود: <strong>${code}</strong>.</p>
+        <p>للاطلاع على التفاصيل، اضغط على الزر أدناه:</p>
+        <a href="https://elmahdy.vercel.app/adminahmed" style="
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        ">
+            عرض التفاصيل
+        </a>
+    `
     };
 
     await transporter.sendMail(mailOptions, (error, info) => {
@@ -40,7 +55,20 @@ const transporter = nodemailer.createTransport({
         bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
         subject: `    طلب اوردر جديد من  ${name} :/${code}`, // موضوع البريد
         text: `     قام بارسال طلب جديد  ${name}.`, // نص البريد
-        html: `<p>  اوردر جديد من الكود  : <strong>${code}</strong>.</p>` // محتوى HTML للبريد
+        html: `<p>  اوردر جديد من الكود  : <strong>${code}</strong>.</p>
+         <a href="https://elmahdy.vercel.app/adminahmed" style="
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        ">
+            عرض التفاصيل
+        </a>
+        ` // محتوى HTML للبريد
     };
 
     await transporter.sendMail(mailOptions, (error, info) => {

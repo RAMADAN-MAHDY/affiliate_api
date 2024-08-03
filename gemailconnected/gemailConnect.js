@@ -11,14 +11,12 @@ const transporter = nodemailer.createTransport({
   });
 
   const sendMailbyCommition = async (code)=>{
-console.log(code);
-const recipients = ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'];
-    for (const recipient of recipients) {
+// console.log(code);
 
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
-        to: recipient, 
-        // bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'],// عنوان المستلم (حساب Gmail الخاص بك)
+        to: ['ramadanmahdy45@gmail.com' ], 
+        bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'],// عنوان المستلم (حساب Gmail الخاص بك)
         subject: `  طلب العموله من الكود :/${code}`, // موضوع البريد
         text: `  طلب العموله  بكود ${code}.`, // نص البريد
         html: `<p>تم إضافة طلب عموله جديد من الكود <strong>${code}</strong>.</p>` // محتوى HTML للبريد
@@ -30,19 +28,16 @@ const recipients = ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'];
         } else {
           console.log('تم إرسال البريد الإلكتروني بنجاح:', info.response);
         }})
-    }
   }
 
 
 
 
   const sendMailbyOrder = async (code ,name)=>{
-    const recipients = ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'];
-    // for (const recipient of recipients) {
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
         // to: ['ramadanmahdy45@gmail.com'],
-        bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com' , 'ramadanmahdy52@gmail.com'] , // عنوان المستلم (حساب Gmail الخاص بك)
+        bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
         subject: `    طلب اوردر جديد من  ${name} :/${code}`, // موضوع البريد
         text: `     قام بارسال طلب جديد  ${name}.`, // نص البريد
         html: `<p>  اوردر جديد من الكود  : <strong>${code}</strong>.</p>` // محتوى HTML للبريد
@@ -54,9 +49,6 @@ const recipients = ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'];
         } else {
           console.log('تم إرسال البريد الإلكتروني بنجاح:', info.response);
         }})
-
-    // }
-
   }
 
   export {sendMailbyOrder};

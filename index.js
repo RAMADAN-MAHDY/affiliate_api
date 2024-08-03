@@ -35,7 +35,8 @@ import imagesSlider from './routers/GET/getImageCarsolar.js';
 const app = express();
 
 const port = 5000;
-
+//http://localhost:3000
+//https://elmahdy.vercel.app
 const corsOptions = {
     origin: 'https://elmahdy.vercel.app',
     optionsSuccessStatus: 200

@@ -15,7 +15,7 @@ console.log(code);
 
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
-        to: ['ramadanmahdy45@gmail.com' , 'ramadanmahdy52@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
+        to: ['ramadanmahdy45@gmail.com' , 'ahmedmahdy20105@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
         subject: `  طلب العموله من الكود :/${code}`, // موضوع البريد
         text: `  طلب العموله  بكود ${code}.`, // نص البريد
         html: `<p>تم إضافة طلب عموله جديد من الكود <strong>${code}</strong>.</p>` // محتوى HTML للبريد
@@ -32,13 +32,13 @@ console.log(code);
 
 
 
-  const sendMailbyOrder = async ({code })=>{
+  const sendMailbyOrder = async (code ,name)=>{
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
-        to: ['ramadanmahdy45@gmail.com' , 'ramadanmahdy52@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
-        subject: `    طلب اوردر جديد من ${names} :/${code}`, // موضوع البريد
-        text: `     قام بارسال طلب جديد ${names}.`, // نص البريد
-        html: `<p>تم إضافة طلب عموله جديد من الكود <strong>${code}</strong>.</p>` // محتوى HTML للبريد
+        to: ['ramadanmahdy45@gmail.com' , 'ahmedmahdy20105@gmail.com'], // عنوان المستلم (حساب Gmail الخاص بك)
+        subject: `    طلب اوردر جديد من  ${name} :/${code}`, // موضوع البريد
+        text: `     قام بارسال طلب جديد  ${name}.`, // نص البريد
+        html: `<p>  اوردر جديد من الكود  : <strong>${code}</strong>.</p>` // محتوى HTML للبريد
     };
 
     await transporter.sendMail(mailOptions, (error, info) => {
@@ -49,5 +49,5 @@ console.log(code);
         }})
   }
 
-  export {sendMailbyOrder}
+  export {sendMailbyOrder};
   export default sendMailbyCommition;

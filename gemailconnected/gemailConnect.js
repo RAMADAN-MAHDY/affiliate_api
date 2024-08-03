@@ -12,11 +12,13 @@ const transporter = nodemailer.createTransport({
 
   const sendMailbyCommition = async (code)=>{
 console.log(code);
+const recipients = ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'];
+    for (const recipient of recipients) {
 
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
-        to: ['ramadanmahdy45@gmail.com' ], 
-        bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'],// عنوان المستلم (حساب Gmail الخاص بك)
+        to: recipient, 
+        // bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'],// عنوان المستلم (حساب Gmail الخاص بك)
         subject: `  طلب العموله من الكود :/${code}`, // موضوع البريد
         text: `  طلب العموله  بكود ${code}.`, // نص البريد
         html: `<p>تم إضافة طلب عموله جديد من الكود <strong>${code}</strong>.</p>` // محتوى HTML للبريد
@@ -28,6 +30,7 @@ console.log(code);
         } else {
           console.log('تم إرسال البريد الإلكتروني بنجاح:', info.response);
         }})
+    }
   }
 
 

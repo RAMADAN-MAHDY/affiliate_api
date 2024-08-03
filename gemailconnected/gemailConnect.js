@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
     const mailOptions = {
         from: 'ramadanmahdy45@gmail.com', // عنوان المرسل
-        to: ['ramadanmahdy45@gmail.com' ], 
+        // to: ['ramadanmahdy45@gmail.com' ], 
         bcc: ['ramadanmahdy45@gmail.com', 'ahmedmahdy20105@gmail.com'],// عنوان المستلم (حساب Gmail الخاص بك)
         subject: `  طلب العموله من الكود :/${code}`, // موضوع البريد
         text: `  طلب العموله  بكود ${code}.`, // نص البريد

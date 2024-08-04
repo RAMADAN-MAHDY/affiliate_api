@@ -14,9 +14,13 @@ app.get('/lengthoforder', async (req, res) => {
             const codeList = conditions.map(condition => condition.code);
             
             const findPromises = codeList.map(async code => {
-                const findcode = await Conditions.findOne({ code });
-                if (findcode) {
-                    return { code, conditionsLength: findcode.conditions.length };
+                const findcode = await Conditions.find({ code });
+                if (findcode && findcode.length > 0) {
+                    let result = 0 ; 
+                   findcode.forEach(data=>{
+                    result += data.conditions.length ;                 
+                })
+                    return { code, conditionsLength: result};
                 } else {
                     console.log(`Code ${code} not found in conditions`);
                     return null; // or handle as needed

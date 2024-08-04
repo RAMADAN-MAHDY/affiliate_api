@@ -11,7 +11,7 @@ app.get("/condition/:id" , async(req,res)=>{
     try{
      const { id }= req.params ; 
  
-     const finddetails = await Conditions.findOne({code: id});
+     const finddetails = await Conditions.find({code: id});
  
    if(!finddetails){
      return  res.status(500).json("حدث خطا");

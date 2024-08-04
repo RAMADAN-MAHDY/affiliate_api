@@ -14,22 +14,30 @@ const ChangeState = ()=> {
             return res.status(400).json({ error: 'State is required.' });
         }
 
-        const condition = await Conditions.find({ code });
+        const conditions = await Conditions.find({ code });
 
-        if (!condition) {
+        if (conditions.length === 0) {
             return res.status(404).json('Condition not found');
         }
 
-        const subCondition = condition.conditions.id(conditionId);
-        if (!subCondition) {
-            return res.status(404).json('Sub-condition not found');
-        }
+  // ابحث عن العنصر الفرعي في كل وثيقة
+  let foundSubCondition = null;
+  for (let condition of conditions) {
+      const subCondition = condition.conditions.id(conditionId);
+      if (subCondition) {
+          // تعيين القيمة الجديدة للـ state
+          subCondition.state = state;
+          await condition.save(); // حفظ التعديلات في الوثيقة
+          foundSubCondition = subCondition;
+          break; // أوقف البحث بعد العثور على العنصر الفرعي
+      }
+  }
 
-        subCondition.state = state;
+  if (!foundSubCondition) {
+      return res.status(404).json('Sub-condition not found');
+  }
 
-        await condition.save();
-
-        res.status(200).json(subCondition);
+  res.status(200).json(foundSubCondition);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

@@ -14,7 +14,7 @@ const ChangeState = ()=> {
             return res.status(400).json({ error: 'State is required.' });
         }
 
-        const condition = await Conditions.findOne({ code });
+        const condition = await Conditions.find({ code });
 
         if (!condition) {
             return res.status(404).json('Condition not found');

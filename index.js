@@ -13,7 +13,6 @@ import Commition from './routers/POST/commition.js';
 import SearchByClientName from './routers/POST/SearchByClientName.js' ;
 import PostProducts from './routers/POST/postProduct.js';
 import PostImage from './routers/POST/imageSlider.js' ;
-
 // -----------------DELETE-----------//
 import DeleteOrder from './routers/DELETE/order.js';
 import DeleteProducts from './routers/DELETE/deleteProduct.js';

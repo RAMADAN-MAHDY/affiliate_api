@@ -4,7 +4,7 @@ import Ratans from '../../schema/categorysOfProdcuct/ratan.js';
 import Households from '../../schema/categorysOfProdcuct/Household.js';
 import Clothess from '../../schema/categorysOfProdcuct/clothes.js';
 import SparePartss from '../../schema/categorysOfProdcuct/spareParts.js';
-
+import Mix from '../../schema/categorysOfProdcuct/all.js';
 const PutProducts = () => {
     const app = express();
     app.use(express.json());
@@ -30,6 +30,8 @@ const PutProducts = () => {
                 return await Ratans.findByIdAndUpdate(id, updateFields, { new: true });
             case "5": // SparePartss
                 return await SparePartss.findByIdAndUpdate(id, updateFields, { new: true });
+             case "6": // SparePartss
+                return await Mix.findByIdAndUpdate(id, updateFields, { new: true });
             default:
                 throw new Error('فئة غير صحيحة');
         }

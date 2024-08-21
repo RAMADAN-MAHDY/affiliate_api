@@ -4,7 +4,7 @@ import Ratans from '../../schema/categorysOfProdcuct/ratan.js';
 import Households from '../../schema/categorysOfProdcuct/Household.js';
 import Clothess from '../../schema/categorysOfProdcuct/clothes.js';
 import SparePartss from '../../schema/categorysOfProdcuct/spareParts.js';
-
+import Mix from '../../schema/categorysOfProdcuct/all.js';
 const DeleteProducts = () => {
     const app = express();
     app.use(express.json());
@@ -21,6 +21,8 @@ const DeleteProducts = () => {
                 return await Ratans.findByIdAndDelete(id);
             case "5": // SparePartss
                 return await SparePartss.findByIdAndDelete(id);
+                case "6": // SparePartss
+                return await Mix.findByIdAndDelete(id);
             default:
                 throw new Error('فئة غير صحيحة');
         }

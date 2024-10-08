@@ -23,6 +23,10 @@ const Household = new Schema({
         type: Number,
 
     },
+    commition :{
+        type: String,
+        require: true
+    },
 
 }) 
 

@@ -12,8 +12,10 @@ const PostProducts = () => {
     app.use(express.json());
   
     const validateProductData = (req, res, next) => {
-      const { image, address, details, price} = req.body;
-      if (!image || !address || !details || !price ) {
+      const { image, address, details, price ,commition} = req.body;
+      console.log(commition)
+
+      if (!image || !address || !details || !price || !commition ) {
         return res.status(400).json({ error: 'الحقول المطلوبة مفقودة' });
       }
       next();

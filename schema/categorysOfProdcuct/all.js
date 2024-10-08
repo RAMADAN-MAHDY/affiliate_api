@@ -19,6 +19,10 @@ const Mixs = new Schema({
         type: Number,
         require: true
     },
+    commition :{
+        type: String,
+        require: true
+    },
     newprice :{
         type: Number,
     },

@@ -23,6 +23,10 @@ const SpareParts = new Schema({
         type: Number,
 
     },
+    commition :{
+        type: String,
+        require: true
+    },
 }) 
 
 

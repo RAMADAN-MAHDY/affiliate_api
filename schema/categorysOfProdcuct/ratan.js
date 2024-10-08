@@ -22,6 +22,10 @@ const Ratan = new Schema({
     newprice :{
         type: Number,
     },
+    commition :{
+        type: String,
+        require: true
+    },
   
 }) 
 

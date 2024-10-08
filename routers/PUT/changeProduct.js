@@ -13,7 +13,7 @@ const PutProducts = () => {
         let updateFields = {};
 
         // Iterate through productData and pick only the fields that exist
-        for (let field of ['image', 'address', 'details', 'price' , "newprice"]) {
+        for (let field of ['image', 'address', 'details', 'price' , "newprice" , "commition"]) {
             if (formData[field] !== undefined) {
                 updateFields[field] = formData[field];
             }
@@ -38,8 +38,8 @@ const PutProducts = () => {
     };
 
     const validateProductData = (req, res, next) => {
-        const { image, address, details, price ,newprice} = req.body;
-        if (image === undefined && address === undefined && details === undefined && price === undefined && newprice === undefined ) {
+        const { image, address, details, price ,newprice , commition} = req.body;
+        if (image === undefined && address === undefined && details === undefined && price === undefined && newprice === undefined && commition == undefined ) {
             return res.status(400).json({ error: 'على الأقل يجب تقديم حقل واحد لتحديثه' });
         }
         next();

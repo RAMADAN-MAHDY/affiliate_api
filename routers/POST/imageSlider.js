@@ -7,8 +7,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const IMGBB_API_KEY = process.env.IMGBB_API_KEY;
-const storage = multer.memoryStorage();
 
+
+const PostImage = ()=>{
+const app = express();
+app.use(express.json());
+
+const storage = multer.memoryStorage();// تخزين الصورة في الذاكرة مؤقتًا
+// Multer setup for handling file uploads
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // حجم الصورة محدود بـ 5MB
@@ -21,10 +27,6 @@ const upload = multer({
     }
   },
 });
-
-const PostImage = ()=>{
-const app = express();
-app.use(express.json());
 
 app.post('/image',upload.array('images', 5), async (req ,res) => {
     try{
@@ -58,13 +60,15 @@ app.post('/image',upload.array('images', 5), async (req ,res) => {
           }
         }
 
+        if (imageUrls.length === 0) {
+            return res.status(400).json({ message: 'لم يتم رفع الصور بنجاح، يرجى المحاولة مرة أخرى' });
+          }
      // إذا تم رفع صور جديدة، قم بتحديث الحقل image
-     if (imageUrls.length > 0) {
          await Images.deleteMany({});
 
          await Images.create({image: imageUrls});
         
-      }
+      
 
 
 

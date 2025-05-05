@@ -93,8 +93,13 @@ const PostProducts = () => {
         }
       }
 
+      // تحقق من أن الصور تم رفعها بنجاح
+      if (imageUrls.length === 0) {
+        return res.status(400).json({ message: 'لم يتم رفع الصور بنجاح، يرجى المحاولة مرة أخرى' });
+      }
+
       // Add imageUrls to productData
-      const updatedProductData = { ...productData, imageUrls };
+      const updatedProductData = { ...productData, image: imageUrls };
 
       const createdProduct = await createProductByCategory(category, updatedProductData);
 

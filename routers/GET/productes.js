@@ -49,27 +49,27 @@ const GetProdects = () => {
     // GET لجميع الفئات معًا
     app.get('/productsAll', async (req, res) => {
         try {
-            // const cosmetics = await Cosmetic.find();
-            // const clothess = await Clothess.find();
-            // const households = await Households.find();
-            // const ratans = await Ratans.find();
+            const cosmetics = await Cosmetic.find();
+            const clothess = await Clothess.find();
+            const households = await Households.find();
+            const ratans = await Ratans.find();
             const alls = await Mix.find();
 
-            // console.log('Cosmetics:', cosmetics);
-            // console.log('Clothess:', clothess);
-            // console.log('Households:', households);
-            // console.log('Ratans:', ratans);
-            // console.log('Alls:', alls);
+            // // console.log('Cosmetics:', cosmetics);
+            // // console.log('Clothess:', clothess);
+            // // console.log('Households:', households);
+            // // console.log('Ratans:', ratans);
+            // // console.log('Alls:', alls);
 
-            // const allProducts = {
-            //   "متسحضرات تجميل" : cosmetics,
-            //   "ملابس" : clothess,
-            //    " ادوات منزليه" : households,
-            //    " منتجات اوت دور (حدائق)" : ratans,
-            //   " منوعات" : alls
-            // };
+            const allProducts = {
+              "متسحضرات تجميل" : cosmetics,
+              "ملابس" : clothess,
+               " ادوات منزليه" : households,
+               " منتجات اوت دور (حدائق)" : ratans,
+              " منوعات" : alls
+            };
 
-            res.status(200).json(alls);
+            res.status(200).json(allProducts);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

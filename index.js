@@ -36,11 +36,24 @@ const app = express();
 const port = 5000;
 //http://localhost:3000
 //https://elmahdy.vercel.app
+// 'https://elmahdy.vercel.app', 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://elmahdy.vercel.app'
+];
+
 const corsOptions = {
-    origin: 'https://elmahdy.vercel.app',
-    optionsSuccessStatus: 200
-  }
-  
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS BLOCKED ORIGIN:', origin); // للمساعدة في التتبع
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200
+};
+
 app.use(cors(corsOptions));
 
 app.use((req, res, next) => {

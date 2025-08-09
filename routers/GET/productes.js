@@ -53,21 +53,21 @@ const GetProdects = () => {
             const clothess = await Clothess.find();
             const households = await Households.find();
             const ratans = await Ratans.find();
+            const spareParts = await SparePartss.find();
             const alls = await Mix.find();
 
-            // // console.log('Cosmetics:', cosmetics);
-            // // console.log('Clothess:', clothess);
-            // // console.log('Households:', households);
-            // // console.log('Ratans:', ratans);
-            // // console.log('Alls:', alls);
+            // console.log(cosmetics)
+
 
             const allProducts = {
-              "متسحضرات تجميل" : cosmetics,
+            //   "متسحضرات تجميل" : cosmetics,
               "ملابس" : clothess,
                " ادوات منزليه" : households,
                " منتجات اوت دور (حدائق)" : ratans,
-              " منوعات" : alls
+            //   " منوعات" : alls,
+              "ستائر ومفروشات"  : spareParts,
             };
+            // res.status(200).json([,,,spareParts , ...0
 
             res.status(200).json(allProducts);
         } catch (error) {
